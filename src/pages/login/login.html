@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Login
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding style="background:url(assets/img/vH2EEfwURuqXXI3CZeSp_fun_youth.jpg) no-repeat center;background-size:cover;" id="page2">
+
+{{error}}
+
+  <form [formGroup]="formData" (ngSubmit)="login()">
+    <ion-list id="login-list1">
+
+      <ion-item id="login-input5">
+        <ion-label>
+          	Email
+        </ion-label>
+        <ion-input type="email" placeholder="" formControlName="email"  [(ngModel)]="email"></ion-input>
+      </ion-item>
+      <ion-item id="login-input6">
+        <ion-label>
+          	Password
+        </ion-label>
+        <ion-input type="text" placeholder="" formControlName="password"  [(ngModel)]="password" ></ion-input>
+      </ion-item>
+    </ion-list>
+    <button [disabled]="!formData.valid" ion-button color="positive" block>
+     LogIn
+    </button>
+  </form>
+
+  
+</ion-content>

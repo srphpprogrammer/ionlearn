@@ -1,0 +1,74 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Profile</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+
+  <form [formGroup]="formData" (ngSubmit)="save()">
+    <ion-list id="editProfile-list1">
+      <ion-item id="editProfile-input4">
+        <ion-label>
+          First Name
+        </ion-label>
+        <ion-input type="text" placeholder="" formControlName="fname"  [(ngModel)]="fname"></ion-input>
+      </ion-item>
+      
+      <ion-item id="editProfile-input5">
+        <ion-label>
+          Last Name
+        </ion-label>
+        <ion-input type="lname" placeholder="" formControlName="lname"  [(ngModel)]="lname"></ion-input>
+      </ion-item>
+
+      <ion-item id="editProfile-input6">
+        <ion-label>
+          Location
+        </ion-label>
+        <ion-input type="password" placeholder="" formControlName="location"  [(ngModel)]="location"></ion-input>
+      </ion-item>
+
+
+    </ion-list>
+    <button [disabled]="!formData.valid" ion-button color="positive" block>
+      Sign up
+    </button>
+  </form>
+
+
+
+
+
+
+<!--  
+  <ion-card>
+
+   <img src="assets/img/bjork-live.jpg"/>
+
+    <ion-card-content>
+      <ion-card-title>
+        Asker
+      </ion-card-title>
+      <p>
+        Just Another Pointless Human
+      </p>
+    </ion-card-content>
+
+    <ion-item>
+      <ion-icon name='musical-notes' item-start style="color: #d03e84"></ion-icon>
+      Albums
+      <ion-badge item-end>9</ion-badge>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name='logo-twitter' item-start style="color: #55acee"></ion-icon>
+      Followers
+      <ion-badge item-end>260k</ion-badge>
+    </ion-item>
+
+  </ion-card>
+ -->
+</ion-content>

@@ -1,0 +1,102 @@
+    constructor(http: Http) {
+        this.result = {friends:[]};
+        http.get('./friends.json').map((res: Response) => res.json()).subscribe(res => this.result = res);
+    }x
+            if(this.res.status == '201') {
+              console.log(this.res.status)
+              /** pull the sign up form off and show the login screen */
+              /** display login screen */
+            }
+            else {
+              /** keep the sign up form up and display the error */
+              console.log(this.res.status)
+            }
+
+ .subscribe(
+    data => this.res = data
+  )  
+
+
+            if(this.res.status == '201') {
+              console.log(this.res.status)
+              /** pull the sign up form off and show the login screen */
+              /** display login screen */
+            }
+            else {
+              /** keep the sign up form up and display the error */
+              console.log(this.res.status)
+            }
+
+
+
+
+
+/*    
+      .subscribe(
+        (data: any) => {
+            console.log(data);
+        }, (error: any) => {
+            console.log(error);
+        }
+      ).map(data => JSON.parse(data))
+    .then(data => this.navCtrl.push(ProfiePage,data))
+
+    .catch(e => {
+    .catch((error: any) => {
+
+          if (error.status == 500) {
+
+            } else if (error.status == 588) {
+
+          }
+
+           this.errors = "Username already exists";
+
+        })
+     if(e == 1) this.errors = "Username already exists";
+    });
+*/
+
+
+      
+ /*     
+
+   .map((res: Response) => {
+              if (res) {
+                  if (res.status === 201) {
+                      return [{ status: res.status, json: res }]
+                  }
+                  else if (res.status === 200) {
+                      return [{ status: res.status, json: res }]
+                  }
+              }
+          }).catch((error: any) => {
+              if (error.status < 400 ||  error.status ===500) {
+                  console.log(error);
+                  return error;
+              }
+          })
+
+
+         .map((res: Response) => res.json()).catch(
+        (error: Response) => {
+            return Observable.throw(error.json())
+        });
+
+
+  .map((res: Response) => res.json());
+   .catch((error: any) => {
+
+          if (error.status == 500) {
+
+            } else if (error.status == 588) {
+
+          }
+
+          return error.status;
+
+        });*/
+
+     // .map(this.extractData);
+     // .catch(e => console.log("reg error", e));
+      //.toPromise().then(data => console.log(data))

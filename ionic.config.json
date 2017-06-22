@@ -1,0 +1,11 @@
+{
+  "name": "blank",
+  "app_id": "",
+  "type": "ionic-angular",
+    "proxies": [
+    {
+        "path": "/api",
+        "proxyUrl": "http://laralearn.dev"
+    }
+	]
+}
