@@ -5,6 +5,8 @@ import { AuthServiceProvider } from	'../../providers/auth-service/auth-service';
 import { AlertController } from 'ionic-angular';
 import { HttpService } from  '../../providers/http-service/http-service';
 import {Storage} from '@ionic/storage';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
 
 /**
  * Generated class for the ProfiePage page.
@@ -21,7 +23,7 @@ import {Storage} from '@ionic/storage';
 
 export class ProfiePage {
 
-
+ 
   private formData: FormGroup;
   public error: string = "";
 
@@ -35,7 +37,8 @@ export class ProfiePage {
   	public formBuilder: FormBuilder,
     public httpService: HttpService,
     public alertCtrl: AlertController,
-    private storage: Storage																																																																															
+    private storage: Storage,
+    private transfer: Transfer,private camera: Camera																																																																														
   	) {
 
     this.formData = this.formBuilder.group({
@@ -53,7 +56,7 @@ export class ProfiePage {
 
   save(){
 
-    this.httpService.post("http://laralearn.dev/api/profile",{
+    this.httpService.post("http://localhost/asker/laralearn/public/api/profile",{
       fname: this.fname,
       lname: this.lname,
       location: this.location
@@ -83,12 +86,54 @@ export class ProfiePage {
         }
 
       });
+  }
+
+  ionViewDidLoad() {
+    console.log("In Profile Page");
+  }
+
+
+upload()
+    {
+      
+       let options = {
+
+           quality: 100
+            };
+
+
+      this.camera.getPicture(options).then((imageData) => {
+       // imageData is either a base64 encoded string or a file URI
+       // If it's base64:
+
+     const fileTransfer: TransferObject = this.transfer.create();
+
+      let options1: FileUploadOptions = {
+         fileKey: 'file',
+         fileName: 'name.jpg',
+         headers: {}
+      
+      }
+
+  fileTransfer.upload(imageData, 'http://localhost/asker/laralearn/public/api/profile', options1)
+   .then((data) => {
+     // success
+     alert("success");
+   }, (err) => {
+     // error
+     alert("error"+JSON.stringify(err));
+   });
+
+
+    });
+
+ 
+}
+
+
 
 
   }
 
 
 
-
-
-}

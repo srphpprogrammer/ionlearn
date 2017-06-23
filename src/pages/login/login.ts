@@ -46,10 +46,6 @@ export class LoginPage {
   	
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
-
 
   login(){
 
@@ -85,10 +81,19 @@ export class LoginPage {
   }
 
 
+  ionViewCanEnter() {
+
+  }
 
 
 /*
-    this.authService.login(this.formData.value)
+       return this.storage.get('token').then((isLoggedIn) => {
+      if(isLoggedIn !== null){
+        return false;
+      }
+    }).catch(e=>{
+      return true;
+    }); this.authService.login(this.formData.value)
     .subscribe(
 
       data => {

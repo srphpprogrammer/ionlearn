@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, MenuController } from 'ionic-angular';
 
 import { SignupPage } from '../signup/signup';
 import { LoginPage } from '../login/login';
 
 import { ProfiePage } from '../profie/profie';
 import {Storage} from '@ionic/storage';
+import { HttpService } from  '../../providers/http-service/http-service';
 
 @Component({
   selector: 'page-home',
@@ -17,27 +18,58 @@ export class HomePage {
 
   constructor(
   	public navCtrl: NavController,
-    private storage: Storage            
+    private storage: Storage,
+    public auth: HttpService,
+    public menuCtrl: MenuController,
+    
   	) {
-
- 
-    this.storage.get('token').then((isLoggedIn) => {
-        if(isLoggedIn !== null){
-        this.navCtrl.push(ProfiePage);
-        }
- 
-    });
 
   }
 
   signup(){
-    console.log("SignupPage Redirected");
     this.navCtrl.push(SignupPage);
   }
 
   login(){
     this.navCtrl.push(LoginPage);
   }
+
+  ionViewCanEnter(){
+    this.auth.isAuthenticated().then(data => {
+      if(data === true){
+        this.navCtrl.setRoot(ProfiePage);
+      }
+    });
+  }
+
+  ionViewOnLoad(){
+
+       // this.menuCtrl.enable(true);
+
+  }
+
+
+
+/*  
+
+
+   if(this.auth.isAuthenticated()) {
+        this.rootPage = HomePage;
+      } else {
+        this.rootPage = LoginPage;
+      }  
+    this.storage.get('token').then((isLoggedIn) => {
+        if(isLoggedIn !== null){
+        this.navCtrl.push(ProfiePage);
+        }
+ 
+    }).catch(e=>{
+
+      console.log("error");
+    });*/
+
+  
+
 
 
 }

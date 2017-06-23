@@ -2,14 +2,17 @@ import {Injectable} from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import * as AppConfig from '../../app/app.config';
 import {AuthHttp} from 'angular2-jwt';
-
+import {Storage} from '@ionic/storage';
+/*import {Observable} from 'rxjs/Rx';
+*/
 @Injectable()
 export class HttpService {
 
   public config: any;
   constructor(
     public http: Http,
-    private authHttp: AuthHttp
+    private authHttp: AuthHttp,
+    public storage: Storage
     ) {
     this.config = AppConfig.config;
   }
@@ -41,14 +44,25 @@ export class HttpService {
 
 
   post(url, data) {
-  console.log(JSON.stringify(url));
-  console.log(JSON.stringify(data));
-    
-   return this.authHttp.post(url,JSON.stringify(data));
+    console.log(JSON.stringify(url));
+    console.log(JSON.stringify(data));
+     return this.authHttp.post(url,JSON.stringify(data));
   }
 
 
 
+  isAuthenticated() {
+
+    return this.storage.get('token').then(token => {
+      if (token !== null) {
+        //console.log(token + "is not null");
+        return true;
+      }
+    }).catch(e => {
+      return null;
+    });
+
+  }
 
 /*
 

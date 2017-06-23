@@ -34,8 +34,10 @@
 
     </ion-list>
     <button [disabled]="!formData.valid" ion-button color="positive" block>
-      Sign up
+      Save
     </button>
+    <button (click)="upload()" ion-button > Upload </button>
+
   </form>
 
 

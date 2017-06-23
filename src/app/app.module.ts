@@ -13,7 +13,9 @@ import { LoginPage } from '../pages/login/login';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { ProfiePage } from '../pages/profie/profie';
 import {AuthHttp, AuthConfig} from 'angular2-jwt';
-  
+  import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+
 import {IonicStorageModule} from '@ionic/storage';
 import {HttpService} from '../providers/http-service/http-service';
 //import { Storage } from '@ionic/storage';
@@ -24,8 +26,8 @@ import {HttpService} from '../providers/http-service/http-service';
 let storage = new Storage({});
 
 export function getAuthHttp(http) {
-  console.log(storage.get('token'));
  return new AuthHttp(new AuthConfig({
+    noJwtError: true,
     tokenGetter: (() => storage.get('token')),
   }), http);
 
@@ -61,7 +63,7 @@ export function getAuthHttp(http) {
   ],
   providers: [
     StatusBar,
-    SplashScreen,
+    SplashScreen,Transfer,Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider,
     HttpService,

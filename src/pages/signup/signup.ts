@@ -5,7 +5,8 @@ import {Validators, FormBuilder, FormGroup} from '@angular/forms';
 import { ProfiePage } from '../profie/profie';
 import { AlertController } from 'ionic-angular';
 
-import { AuthServiceProvider } from	'../../providers/auth-service/auth-service';
+import { AuthServiceProvider } from  '../../providers/auth-service/auth-service';
+import { HttpService } from	'../../providers/http-service/http-service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import {Storage} from '@ionic/storage';
@@ -23,7 +24,8 @@ export class SignupPage {
 
   constructor(
   	public navCtrl: NavController,
-  	public authService: AuthServiceProvider,
+    public authService: AuthServiceProvider,
+  	public httpAuth: HttpService,
   	public formBuilder: FormBuilder,
     public alertCtrl: AlertController,
     private storage: Storage																																																											
@@ -34,14 +36,14 @@ export class SignupPage {
       password: ['', Validators.required],
     });
   
-    this.storage.get('token').then((isLoggedIn) => {
-        if(isLoggedIn !== null){
-        this.navCtrl.push(ProfiePage);
-        }
- 
+
+
+
+  }
+  ionViewCanEnter(){
+    this.httpAuth.isAuthenticated().then(data => {
+      return true;
     });
-
-
   }
 
   register(){

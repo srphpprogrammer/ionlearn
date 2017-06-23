@@ -4,6 +4,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
+import { LoginPage } from '../pages/login/login';
+import { HttpService } from  '../providers/http-service/http-service';
 
 @Component({
   templateUrl: 'app.html'
@@ -11,12 +13,22 @@ import { HomePage } from '../pages/home/home';
 export class MyApp {
   rootPage:any = HomePage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public auth: HttpService) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
-      splashScreen.hide();
+      splashScreen.show();
+
+      console.log(this.auth.isAuthenticated());
+      if(this.auth.isAuthenticated()) {
+        this.rootPage = HomePage;
+      }/* else {
+        this.rootPage = LoginPage;
+      }*/
+
+
+
     });
   }
 }
