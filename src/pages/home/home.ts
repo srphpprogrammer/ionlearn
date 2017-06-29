@@ -5,6 +5,7 @@ import { SignupPage } from '../signup/signup';
 import { LoginPage } from '../login/login';
 
 import { ProfiePage } from '../profie/profie';
+import { ActivityPage } from '../activity/activity';
 import {Storage} from '@ionic/storage';
 import { HttpService } from  '../../providers/http-service/http-service';
 
@@ -35,16 +36,16 @@ export class HomePage {
   }
 
   ionViewCanEnter(){
-    this.auth.isAuthenticated().then(data => {
+   /* this.auth.isAuthenticated().then(data => {
       if(data === true){
-        this.navCtrl.setRoot(ProfiePage);
+        this.navCtrl.setRoot(ActivityPage);
       }
-    });
+    });*/
   }
 
   ionViewOnLoad(){
 
-       // this.menuCtrl.enable(true);
+   this.menuCtrl.enable(true);
 
   }
 

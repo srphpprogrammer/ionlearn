@@ -24,12 +24,14 @@ export class HttpService {
     headers.append('Access-Control-Allow-Methods ', ':GET, POST, PUT, DELETE, OPTIONS'); 
   }
 
-  get(url) {
-    let headers = new Headers();
+  get(url,data) {
+/*    let headers = new Headers();
     this.createAuthorizationHeader(headers);
     return this.http.get(url, {
       headers: headers
-    });
+    });*/
+    return this.authHttp.get(url,JSON.stringify(data));
+
   }
 
   xpost(url, data) {
@@ -63,6 +65,14 @@ export class HttpService {
     });
 
   }
+
+  logout(){
+    console.log("Logout called");
+    this.storage.remove('user');
+    this.storage.remove('token');
+  }
+
+
 
 /*
 

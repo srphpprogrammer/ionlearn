@@ -10,6 +10,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import {Storage} from '@ionic/storage';
 import { ProfiePage } from '../profie/profie';
+import { ActivityPage } from '../activity/activity';
 
 /*
  * Generated class for the LoginPage page.
@@ -54,7 +55,7 @@ export class LoginPage {
 
       data => {
           this.saveData(data);
-          this.navCtrl.push(ProfiePage);
+          this.navCtrl.setRoot(ActivityPage);
       },
 
       error => {
@@ -67,8 +68,12 @@ export class LoginPage {
           alert.present()
           //this.error = "Username already exists"
         }else{
-
-          this.error = "Something went wrong. Please try again"
+          let alert = this.alertCtrl.create({
+            title: 'Error!',
+            subTitle: 'Invalid Username or Password',
+            buttons: ['OK']
+          });
+          alert.present();
         }
 
       });
@@ -81,10 +86,16 @@ export class LoginPage {
   }
 
 
-  ionViewCanEnter() {
+  ionViewCanEnter(){
+      this.httpService.isAuthenticated().then(data => {
+        if(data === true){
+           this.navCtrl.setRoot(ProfiePage);
 
+        }else{
+         return true;
+        }
+      });
   }
-
 
 /*
        return this.storage.get('token').then((isLoggedIn) => {

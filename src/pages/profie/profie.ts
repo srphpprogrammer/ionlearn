@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, NavController, MenuController } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup} from '@angular/forms';
 import { AuthServiceProvider } from	'../../providers/auth-service/auth-service';
 import { AlertController } from 'ionic-angular';
@@ -7,6 +7,9 @@ import { HttpService } from  '../../providers/http-service/http-service';
 import {Storage} from '@ionic/storage';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
+import { ActivityPage } from '../activity/activity';
+import { NavParams } from 'ionic-angular';
+import * as AppConfig from '../../app/app.config';
 
 /**
  * Generated class for the ProfiePage page.
@@ -27,10 +30,12 @@ export class ProfiePage {
   private formData: FormGroup;
   public error: string = "";
 
-  fname: any;
-  lname: any;
+  about: any;
+  profname: any;
   location: any;
-
+  profile: any = {};
+  imgUrl: any;
+  config:any;
   constructor(
   	public navCtrl: NavController,
   	public authService: AuthServiceProvider,
@@ -38,14 +43,70 @@ export class ProfiePage {
     public httpService: HttpService,
     public alertCtrl: AlertController,
     private storage: Storage,
-    private transfer: Transfer,private camera: Camera																																																																														
+    public navParams: NavParams,
+    public menuCtrl: MenuController,
+    private transfer: Transfer,private camera: Camera,
+
+
   	) {
 
-    this.formData = this.formBuilder.group({
-      fname: ['', Validators.required],
-      location: ['', Validators.compose([Validators.required])],
-      lname: ['', Validators.required],
-    });
+          this.config = AppConfig.config;
+      this.imgUrl = this.config.imgUrl;
+    if(navParams.get('user')){
+      let pdata: any  = navParams.get('user');
+      this.profile.name = pdata.name;
+      this.profile.profile_image = pdata.profile_image;
+      this.profile.about = pdata.brights;
+
+    }else{
+
+
+
+     this.httpService.get(this.config.apiUrl+"auth/mobprofile",{})
+     .map(data => data.json())
+    .subscribe(
+      data => {
+      console.log(data);
+
+        this.profile.name = data.name;
+        this.profile.profile_image = data.profile_image;
+        this.profile.about = data.brights;
+      },
+
+      error => {
+
+      });
+
+
+/*
+       this.httpService.post("http://localhost/asker/laralearn/public/api/auth/profile",{
+      about: this.about,
+      profname: this.profname,
+    }).subscribe(
+
+      data => {
+
+        this.profile.name = data.name;
+        this.profile.profile_image = data.profile_image;
+        this.profile.about = data.brights;
+
+      },
+
+      error => {
+      
+      });*/
+
+
+    }
+
+
+
+
+/*    this.formData = this.formBuilder.group({
+      about: ['', Validators.required],
+      //location: ['', Validators.compose([Validators.required])],
+      profname: ['', Validators.required],
+    });*/
      
 
 
@@ -56,79 +117,81 @@ export class ProfiePage {
 
   save(){
 
-    this.httpService.post("http://localhost/asker/laralearn/public/api/profile",{
-      fname: this.fname,
-      lname: this.lname,
-      location: this.location
+    this.httpService.post("http://localhost/asker/laralearn/public/api/auth/profile",{
+      about: this.about,
+      profname: this.profname,
     }).subscribe(
 
       data => {
           let alert = this.alertCtrl.create({
             title: 'Success!',
-            subTitle: 'Yes, Really! :)',
+            subTitle: 'Profile has been successfully updated',
             buttons: ['OK']
           });
-          alert.present()
+          alert.present().then((data) => {
+          this.navCtrl.push(ActivityPage);
+
+        });
       },
 
       error => {
-        console.log("error")
-        if(error.status == 500){
           let alert = this.alertCtrl.create({
             title: 'Error!',
-            subTitle: 'Invalid Username or Password',
+            subTitle: 'Something went wrong. Please try again',
             buttons: ['OK']
           });
           alert.present()
-          //this.error = "Username already exists"
-        }else{
-          this.error = "Something went wrong. Please try again"
-        }
-
       });
   }
-
-  ionViewDidLoad() {
-    console.log("In Profile Page");
+   ionViewDidLoad() {
+    this.menuCtrl.enable(true);
+  }
+  ionViewDidLeave(){
+  //  this.menuCtrl.enable(true);
   }
 
 
-upload()
+  ionViewOnLoad() {
+       this.menuCtrl.enable(true);
+
+
+  }
+
+
+    upload()
     {
-      
-       let options = {
 
-           quality: 100
-            };
-
-
-      this.camera.getPicture(options).then((imageData) => {
-       // imageData is either a base64 encoded string or a file URI
-       // If it's base64:
-
-     const fileTransfer: TransferObject = this.transfer.create();
-
-      let options1: FileUploadOptions = {
-         fileKey: 'file',
-         fileName: 'name.jpg',
-         headers: {}
-      
-      }
-
-  fileTransfer.upload(imageData, 'http://localhost/asker/laralearn/public/api/profile', options1)
-   .then((data) => {
-     // success
-     alert("success");
-   }, (err) => {
-     // error
-     alert("error"+JSON.stringify(err));
-   });
+        let options = {
+          quality: 100
+        };
 
 
-    });
+        this.camera.getPicture(options).then((imageData) => {
+        // imageData is either a base64 encoded string or a file URI
+        // If it's base64:
 
- 
-}
+        const fileTransfer: TransferObject = this.transfer.create();
+
+        let options1: FileUploadOptions = {
+          fileKey: 'file',
+          fileName: 'name.jpg',
+          headers: {}
+        }
+
+        fileTransfer.upload(imageData, 'http://localhost/asker/laralearn/public/api/profile', options1)
+        .then((data) => {
+          // success
+          alert("success");
+          }, (err) => {
+          // error
+          alert("error"+JSON.stringify(err));
+        });
+
+
+        });
+
+
+        }
 
 
 

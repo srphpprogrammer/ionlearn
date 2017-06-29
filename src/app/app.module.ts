@@ -12,6 +12,7 @@ import { SignupPage } from '../pages/signup/signup';
 import { LoginPage } from '../pages/login/login';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { ProfiePage } from '../pages/profie/profie';
+import { ActivityPage } from '../pages/activity/activity';
 import {AuthHttp, AuthConfig} from 'angular2-jwt';
   import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
 import { Camera, CameraOptions } from '@ionic-native/camera';
@@ -27,17 +28,11 @@ let storage = new Storage({});
 
 export function getAuthHttp(http) {
  return new AuthHttp(new AuthConfig({
+     //headerName: 'Authorization',
+     tokenName: 'token',
     noJwtError: true,
     tokenGetter: (() => storage.get('token')),
   }), http);
-
-/*  return new AuthHttp(new AuthConfig({
-    noJwtError: true,
-    globalHeaders: [{'Accept': 'application/json'}],
-    tokenGetter: (() => storage.get('token')),
-  }), http);
-*/
-
 }
 
 @NgModule({
@@ -45,7 +40,8 @@ export function getAuthHttp(http) {
     MyApp,HomePage,
     ProfiePage,
     SignupPage,
-    LoginPage
+    LoginPage,
+    ActivityPage
   ],
   imports: [
     BrowserModule,
@@ -59,7 +55,8 @@ export function getAuthHttp(http) {
     HomePage,
     ProfiePage,
     SignupPage,
-    LoginPage
+    LoginPage,
+    ActivityPage
   ],
   providers: [
     StatusBar,
@@ -78,6 +75,6 @@ export function getAuthHttp(http) {
 export class AppModule {
 
 
-
+ 
 
 }

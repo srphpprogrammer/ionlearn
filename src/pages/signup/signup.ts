@@ -41,9 +41,13 @@ export class SignupPage {
 
   }
   ionViewCanEnter(){
-    this.httpAuth.isAuthenticated().then(data => {
-      return true;
-    });
+      this.httpAuth.isAuthenticated().then(data => {
+        if(data === true){
+         return false;
+        }else{
+         return true;
+        }
+      });
   }
 
   register(){
