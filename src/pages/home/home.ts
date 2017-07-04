@@ -32,7 +32,7 @@ export class HomePage {
   }
 
   login(){
-    this.navCtrl.push(LoginPage);
+    this.navCtrl.push(LoginPage,{animate: false, direction: 'forward'});
   }
 
   ionViewCanEnter(){
@@ -45,11 +45,13 @@ export class HomePage {
 
   ionViewOnLoad(){
 
-   this.menuCtrl.enable(true);
 
   }
 
 
+ionViewDidEnter() {
+    this.menuCtrl.swipeEnable(false, 'myMenu');
+  }
 
 /*  
 

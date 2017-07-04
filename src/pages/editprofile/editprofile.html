@@ -1,0 +1,54 @@
+<!--
+  Generated template for the EditprofilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Edit Profile
+    </ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding  class="laralearn">
+ <form [formGroup]="formData" (ngSubmit)="save()">
+    <ion-list id="editProfile-list1">
+
+      
+      <ion-item id="editProfile-input5">
+        <ion-label>
+         Name
+        </ion-label>
+        <ion-input type="text" placeholder="" formControlName="profname"  [(ngModel)]="profname"></ion-input>
+      </ion-item>
+      <ion-item id="editProfile-input4">
+        <ion-label>
+          About
+        </ion-label>
+        <ion-input type="text" placeholder="" formControlName="about"  [(ngModel)]="about"></ion-input>
+      </ion-item>
+      <ion-item id="editProfile-input6">
+        <ion-label>
+          Location
+        </ion-label>
+        <ion-input type="password" placeholder="" formControlName="location"  [(ngModel)]="location"></ion-input>
+      </ion-item>
+
+
+    </ion-list>
+    <button [disabled]="!formData.valid" ion-button color="positive" block>
+      Save
+    </button>
+   <button (click)="upload()" ion-button > Upload </button>
+
+  </form>
+</ion-content>

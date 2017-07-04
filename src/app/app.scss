@@ -17,11 +17,30 @@
 
 
 .background{
- background:url(../assets/img/vH2EEfwURuqXXI3CZeSp_fun_youth.jpg);
- background-size:cover;
- background-position:center;
+background:#FFF;
+  // background:url(../assets/img/vH2EEfwURuqXXI3CZeSp_fun_youth.jpg);
+ //   background-size:cover;
+    //background-position:center;
 }
 
+
 .laralearn{
-  background:#8686CF;
+       // background-color:rgb(10,157,215);
+ // background:url(../assets/img/vH2EEfwURuqXXI3CZeSp_fun_youth.jpg);
+  // background-size:cover;
+ // background-position:center;
+
+}
+
+.toolbar-background {
+        background-color:rgb(10,157,215);
+ 
+}
+
+.toolbar-title,.back-button{
+  color:#FFF;
+}
+
+.bar-buttons{
+  color:#FFF;
 }

@@ -1,4 +1,4 @@
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController  } from 'ionic-angular';
 import { Component } from '@angular/core';
 import {Validators, FormBuilder, FormGroup} from '@angular/forms';
 
@@ -36,7 +36,10 @@ export class LoginPage {
   	public formBuilder: FormBuilder,
     public alertCtrl: AlertController,
     private storage: Storage,		
-    public navParams: NavParams) {
+    public navParams: NavParams,
+    public menuCtrl: MenuController
+
+    ) {
 
     this.formData = this.formBuilder.group({
       //name: ['', Validators.required],
@@ -54,6 +57,8 @@ export class LoginPage {
     .subscribe(
 
       data => {
+            this.menuCtrl.swipeEnable(true, 'myMenu');
+
           this.saveData(data);
           this.navCtrl.setRoot(ActivityPage);
       },

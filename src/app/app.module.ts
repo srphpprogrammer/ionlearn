@@ -13,6 +13,8 @@ import { LoginPage } from '../pages/login/login';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { ProfiePage } from '../pages/profie/profie';
 import { ActivityPage } from '../pages/activity/activity';
+import { EditprofilePage } from '../pages/editprofile/editprofile';
+import { PhotosPage } from '../pages/photos/photos';
 import {AuthHttp, AuthConfig} from 'angular2-jwt';
   import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
 import { Camera, CameraOptions } from '@ionic-native/camera';
@@ -41,7 +43,9 @@ export function getAuthHttp(http) {
     ProfiePage,
     SignupPage,
     LoginPage,
-    ActivityPage
+    ActivityPage,
+    EditprofilePage,
+    PhotosPage
   ],
   imports: [
     BrowserModule,
@@ -54,9 +58,11 @@ export function getAuthHttp(http) {
     MyApp,
     HomePage,
     ProfiePage,
+    PhotosPage,
     SignupPage,
     LoginPage,
-    ActivityPage
+    ActivityPage,
+    EditprofilePage
   ],
   providers: [
     StatusBar,

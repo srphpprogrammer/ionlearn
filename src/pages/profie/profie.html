@@ -6,7 +6,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      Activity Feed
+      My Profile
     </ion-title>
 
   </ion-navbar>
@@ -15,44 +15,14 @@
 <ion-content   class="laralearn">
 
 <!-- 
-  <form [formGroup]="formData" (ngSubmit)="save()">
-    <ion-list id="editProfile-list1">
-
-      
-      <ion-item id="editProfile-input5">
-        <ion-label>
-         Name
-        </ion-label>
-        <ion-input type="text" placeholder="" formControlName="profname"  [(ngModel)]="profname"></ion-input>
-      </ion-item>
-      <ion-item id="editProfile-input4">
-        <ion-label>
-          About
-        </ion-label>
-        <ion-input type="text" placeholder="" formControlName="about"  [(ngModel)]="about"></ion-input>
-      </ion-item>
-      <ion-item id="editProfile-input6">
-        <ion-label>
-          Location
-        </ion-label>
-        <ion-input type="password" placeholder="" formControlName="location"  [(ngModel)]="location"></ion-input>
-      </ion-item>
-
-
-    </ion-list>
-    <button [disabled]="!formData.valid" ion-button color="positive" block>
-      Save
-    </button>
-   <button (click)="upload()" ion-button > Upload </button>
-
-  </form>
+ 
  -->
 
 
 
   <ion-card>
 
-   <img src="{{imgUrl}}{{profile.profile_image}}"/>
+   <img src="{{imgUrl}}{{profile.profile_image}}" onError="this.src='assets/img/unknownavatar.png'"/>
 
     <ion-card-content>
       <ion-card-title>
@@ -61,7 +31,13 @@
       <p>
         {{ profile.brights }}
       </p>
+
+
     </ion-card-content>
+   <ion-item>
+
+  <button (click)="editProfile()" ion-button > Edit Profile </button>
+    </ion-item>
 
     <!-- <ion-item>
       <ion-icon name='musical-notes' item-start style="color: #d03e84"></ion-icon>

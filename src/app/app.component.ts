@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { ProfiePage } from '../pages/profie/profie';
 import { ActivityPage } from '../pages/activity/activity';
+import { PhotosPage } from '../pages/photos/photos';
 import { HttpService } from  '../providers/http-service/http-service';
 
 @Component({
@@ -28,6 +29,7 @@ export class MyApp {
     this.pages = [
       {title: 'My Profile ', component: 'ProfiePage'},
       {title: 'My Feed ', component: 'ActivityPage'},
+      {title: 'My Photos ', component: 'PhotosPage'},
       {title: 'Logout', component: 'HomePage', method: 'logout'}
     ];
 
@@ -65,7 +67,9 @@ export class MyApp {
     if (page.component === 'ActivityPage') {
       this.nav.setRoot(ActivityPage);
     }
-
+    if (page.component === 'PhotosPage') {
+      this.nav.setRoot(PhotosPage);
+    }
     // this.nav.push(page.component);
 
     //this.nav.setRoot(page.component);

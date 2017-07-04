@@ -19,13 +19,13 @@
 
 </ion-header>
 
-<ion-content padding    class="laralearn">
+<ion-content class="laralearn">
 
 <ion-card *ngFor="let p of posts">
 
   <ion-item>
     <ion-avatar item-start>
-      <img src="{{imgUrl}}{{p.user.profile_image}}">
+      <img src="{{imgUrl}}{{p.user.profile_image}}" onError="this.src='assets/img/user.png';">
     </ion-avatar>
     <h2 (click)="pushPage(p)">{{ p.user.name }}</h2>
     <p>{{p.created_at  }}</p>

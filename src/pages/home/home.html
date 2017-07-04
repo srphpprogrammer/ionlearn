@@ -1,16 +1,44 @@
 
 <!-- <ion-nav id="nav" [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
  -->
+
+<!--  <ion-header>
+  <ion-navbar>
+    <ion-title  color="white">
+      Home
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+ -->
 <ion-content padding id="page4" class="background">
-  <div class="spacer" style="height:100px;" id="page-spacer3"></div>
-  <h1 id="page-heading1" style="color:#FFFFFF;text-align:center;">
-    LaraLearn
+<ion-slides pager>
+
+
+
+
+  <ion-slide>
+    <h2>LaraLearn.</h2>
+    <h5>The Swissknife for your Job</h5>
+   <ion-img width="200" src="assets/img/slave1.jpg"></ion-img>
+  </ion-slide>
+
+
+  <ion-slide>
+ <h1 id="page-heading1" style="text-align:center;">
+    Join the team
   </h1>
-  <button id="page-button3" ion-button color="positive" block (click)="signup()">
+     <ion-img width="200" src="assets/img/slave2.jpg"></ion-img>
+
+<!--     <div class="spacer" style="height:50px;" id="page-spacer3"></div>
+ --> 
+  <button id="page-button3" ion-button class="lgreen" block (click)="signup()">
     Sign up
   </button>
-  <button id="page-button4" ion-button color="positive" block (click)="login()">
+  <button id="page-button4" ion-button class="lgreen" block (click)="login()">
     Log In
   </button>
+  </ion-slide>
+
+</ion-slides>
 </ion-content>
 

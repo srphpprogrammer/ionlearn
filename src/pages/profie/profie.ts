@@ -8,6 +8,7 @@ import {Storage} from '@ionic/storage';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
 import { ActivityPage } from '../activity/activity';
+import { EditprofilePage } from '../editprofile/editprofile'; 
 import { NavParams } from 'ionic-angular';
 import * as AppConfig from '../../app/app.config';
 
@@ -115,34 +116,11 @@ export class ProfiePage {
  //   console.log(data+"54656565");
   }
 
-  save(){
-
-    this.httpService.post("http://localhost/asker/laralearn/public/api/auth/profile",{
-      about: this.about,
-      profname: this.profname,
-    }).subscribe(
-
-      data => {
-          let alert = this.alertCtrl.create({
-            title: 'Success!',
-            subTitle: 'Profile has been successfully updated',
-            buttons: ['OK']
-          });
-          alert.present().then((data) => {
-          this.navCtrl.push(ActivityPage);
-
-        });
-      },
-
-      error => {
-          let alert = this.alertCtrl.create({
-            title: 'Error!',
-            subTitle: 'Something went wrong. Please try again',
-            buttons: ['OK']
-          });
-          alert.present()
-      });
+  editProfile(){
+     this.navCtrl.push(EditprofilePage);
   }
+
+  
    ionViewDidLoad() {
     this.menuCtrl.enable(true);
   }
@@ -158,41 +136,7 @@ export class ProfiePage {
   }
 
 
-    upload()
-    {
-
-        let options = {
-          quality: 100
-        };
-
-
-        this.camera.getPicture(options).then((imageData) => {
-        // imageData is either a base64 encoded string or a file URI
-        // If it's base64:
-
-        const fileTransfer: TransferObject = this.transfer.create();
-
-        let options1: FileUploadOptions = {
-          fileKey: 'file',
-          fileName: 'name.jpg',
-          headers: {}
-        }
-
-        fileTransfer.upload(imageData, 'http://localhost/asker/laralearn/public/api/profile', options1)
-        .then((data) => {
-          // success
-          alert("success");
-          }, (err) => {
-          // error
-          alert("error"+JSON.stringify(err));
-        });
-
-
-        });
-
-
-        }
-
+    
 
 
 
