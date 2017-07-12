@@ -18,9 +18,30 @@
   </ion-navbar>
 
 </ion-header>
+<!-- 
+ \
+[(ngModel)]="todo.title" 
+ 
+ -->
+<ion-content class="laralearn" fullscreen>
+    <form (ngSubmit)="postStatus()">
+      <ion-item>
 
-<ion-content class="laralearn">
+            <ion-label>Post Update</ion-label>
+      </ion-item>
 
+      <ion-item>
+        <ion-textarea [(ngModel)]="update" name="update"></ion-textarea>
+      </ion-item>
+<ion-grid>
+  <ion-row>
+  <ion-col col-6>
+      <button item-right ion-button color="secondary" small type="submit" block>Submit</button>
+</ion-col>
+  </ion-row>
+</ion-grid>
+
+    </form>
 <ion-card *ngFor="let p of posts">
 
   <ion-item>
@@ -31,25 +52,25 @@
     <p>{{p.created_at  }}</p>
   </ion-item>
 
-<!--   <img src="img/advance-card-bttf.png">
+<!--   [@fade]="fadeState"   <img src="img/advance-card-bttf.png">
  -->
   <ion-card-content>
     <p>{{ p.content }}</p>
   </ion-card-content>
 
   <ion-row>
-    <ion-col>
+   <!--  <ion-col>
       <button ion-button icon-left clear small>
         <ion-icon name="thumbs-up"></ion-icon>
         <div>12 Likes</div>
       </button>
     </ion-col>
     <ion-col>
-<!--       <button ion-button icon-left clear small>
+      <button ion-button icon-left clear small>
         <ion-icon name="text"></ion-icon>
         <div>4 Comments</div>
-      </button> -->
-    </ion-col>
+      </button> 
+    </ion-col>-->
 <!--     <ion-col center text-center>
       <ion-note>
         11h ago

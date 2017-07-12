@@ -25,7 +25,8 @@ import {HttpService} from '../providers/http-service/http-service';
 //import { NavController } from 'ionic-angular';
 //import { AuthGuardProvider } from '../providers/auth-guard/auth-guard';
 
-
+import { File } from '@ionic-native/file';
+import { FilePath } from '@ionic-native/file-path';
 let storage = new Storage({});
 
 export function getAuthHttp(http) {
@@ -66,6 +67,7 @@ export function getAuthHttp(http) {
   ],
   providers: [
     StatusBar,
+    File,
     SplashScreen,Transfer,Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider,

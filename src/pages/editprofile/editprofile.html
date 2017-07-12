@@ -20,9 +20,24 @@
 </ion-header>
 
 <ion-content padding  class="laralearn">
+
+  <img src="{{pathForImage(lastImage)}}" style="width: 100%" [hidden]="lastImage === null">
+  <h3 [hidden]="lastImage !== null">Please Select Image!</h3>
+   <img src="{{imgUrl}}{{profile.profile_image}}" onError="this.src='assets/img/unknownavatar.png'"/>
+ <ion-buttons>
+
+<button ion-button icon-left (click)="presentActionSheet()">
+        <ion-icon name="camera"></ion-icon>Select Image
+      </button>
+     <button ion-button icon-left (click)="uploadImage()" [disabled]="lastImage === null">
+        <ion-icon name="cloud-upload"></ion-icon>Upload
+      </button>
+          </ion-buttons>
  <form [formGroup]="formData" (ngSubmit)="save()">
     <ion-list id="editProfile-list1">
 
+<!--    <button (click)="presentActionSheet()" ion-button > Upload </button>
+ -->  
       
       <ion-item id="editProfile-input5">
         <ion-label>
@@ -36,19 +51,19 @@
         </ion-label>
         <ion-input type="text" placeholder="" formControlName="about"  [(ngModel)]="about"></ion-input>
       </ion-item>
-      <ion-item id="editProfile-input6">
+<!--       <ion-item id="editProfile-input6">
         <ion-label>
           Location
         </ion-label>
         <ion-input type="password" placeholder="" formControlName="location"  [(ngModel)]="location"></ion-input>
-      </ion-item>
+      </ion-item> -->
 
 
     </ion-list>
     <button [disabled]="!formData.valid" ion-button color="positive" block>
       Save
     </button>
-   <button (click)="upload()" ion-button > Upload </button>
-
+<!--    <button (click)="upload()" ion-button > Upload </button>
+ -->
   </form>
 </ion-content>

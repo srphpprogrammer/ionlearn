@@ -67,8 +67,6 @@ export class ProfiePage {
      .map(data => data.json())
     .subscribe(
       data => {
-      console.log(data);
-
         this.profile.name = data.name;
         this.profile.profile_image = data.profile_image;
         this.profile.about = data.brights;
