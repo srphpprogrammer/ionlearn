@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import {Storage} from '@ionic/storage';
 import { ProfiePage } from '../profie/profie';
-import { ActivityPage } from '../activity/activity';
+//import { ActivityPage } from '../activity/activity';
 
 /*
  * Generated class for the LoginPage page.
@@ -60,7 +60,7 @@ export class LoginPage {
             this.menuCtrl.swipeEnable(true, 'myMenu');
 
           this.saveData(data);
-          this.navCtrl.setRoot(ActivityPage);
+          this.navCtrl.setRoot('ActivityPage');
       },
 
       error => {

@@ -8,7 +8,6 @@ import {Storage} from '@ionic/storage';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
 import { ActivityPage } from '../activity/activity';
-import { EditprofilePage } from '../editprofile/editprofile'; 
 import { NavParams } from 'ionic-angular';
 import * as AppConfig from '../../app/app.config';
 
@@ -115,7 +114,7 @@ export class ProfiePage {
   }
 
   editProfile(){
-     this.navCtrl.push(EditprofilePage);
+     this.navCtrl.push('EditprofilePage');
   }
 
   

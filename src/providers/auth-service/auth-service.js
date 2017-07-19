@@ -23,7 +23,7 @@ var AuthServiceProvider = (function () {
     function AuthServiceProvider(http) {
         this.http = http;
         this.config = AppConfig.config;
-        console.log('Hello AuthServiceProvider Provider');
+//        console.log('Hello AuthServiceProvider Provider');
     }
     AuthServiceProvider.prototype.isLoggedIn = function () {
         return null;

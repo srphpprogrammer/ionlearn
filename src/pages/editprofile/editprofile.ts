@@ -13,7 +13,7 @@ import {Validators, FormBuilder, FormGroup} from '@angular/forms';
 import { NavParams } from 'ionic-angular';
 import { AuthServiceProvider } from	'../../providers/auth-service/auth-service';
 import { AlertController } from 'ionic-angular';
-import { ActivityPage } from '../activity/activity';
+//import { ActivityPage } from '../activity/activity';
 import { FilePath } from '@ionic-native/file-path';
 import { BrowserModule } from '@angular/platform-browser';
 import { Platform } from 'ionic-angular';
@@ -121,7 +121,7 @@ save(){
             buttons: ['OK']
           });
           alert.present().then((data) => {
-          this.navCtrl.push(ActivityPage);
+          this.navCtrl.push('ActivityPage');
 
         });
       },

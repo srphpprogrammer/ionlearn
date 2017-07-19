@@ -95,7 +95,7 @@ export class ActivityPage {
 
     this.menuCtrl.enable(true);
 
-      console.log('ionViewDidLoad ActivityPage');
+     // console.log('ionViewDidLoad ActivityPage');
 
   }
 
@@ -126,11 +126,11 @@ export class ActivityPage {
 
       data => {
 
-       console.log({
+/*       console.log({
          content:data.content,
          user:data.user,
          created_at:data.created_at
-       });
+       });*/
 
        this.posts.unshift({
          content:data.content,

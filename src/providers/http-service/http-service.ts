@@ -46,8 +46,8 @@ export class HttpService {
 
 
   post(url, data) {
-    console.log(JSON.stringify(url));
-    console.log(JSON.stringify(data));
+//    console.log(JSON.stringify(url));
+   // console.log(JSON.stringify(data));
      return this.authHttp.post(url,JSON.stringify(data));
   }
 
@@ -57,10 +57,12 @@ export class HttpService {
 
     return this.storage.get('token').then(token => {
       if (token !== null) {
-        //console.log(token + "is not null");
+//        console.log(token + "is not null");
         return true;
       }
     }).catch(e => {
+      //  console.log(e + "not null");
+
       return null;
     });
 

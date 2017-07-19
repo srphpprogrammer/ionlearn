@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { NavController, MenuController } from 'ionic-angular';
+import { NavController, MenuController,IonicPage } from 'ionic-angular';
 
-import { SignupPage } from '../signup/signup';
-import { LoginPage } from '../login/login';
+//import { SignupPage } from '../signup/signup';
+//import { LoginPage } from '../login/login';
 
-import { ProfiePage } from '../profie/profie';
-import { ActivityPage } from '../activity/activity';
+//import { ProfiePage } from '../profie/profie';
+//import { ActivityPage } from '../activity/activity';
 import {Storage} from '@ionic/storage';
 import { HttpService } from  '../../providers/http-service/http-service';
-
+@IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
@@ -28,11 +28,11 @@ export class HomePage {
   }
 
   signup(){
-    this.navCtrl.push(SignupPage);
+    this.navCtrl.push('SignupPage');
   }
 
   login(){
-    this.navCtrl.push(LoginPage,{animate: false, direction: 'forward'});
+    this.navCtrl.push('LoginPage',{animate: false, direction: 'forward'});
   }
 
   ionViewCanEnter(){

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup} from '@angular/forms';
 
-import { ProfiePage } from '../profie/profie';
+//import { ProfiePage } from '../profie/profie';
 import { AlertController } from 'ionic-angular';
 
 import { AuthServiceProvider } from  '../../providers/auth-service/auth-service';
@@ -57,7 +57,7 @@ export class SignupPage {
 
       data => {
           this.saveData(data);
-          this.navCtrl.push(ProfiePage);
+          this.navCtrl.push('ProfiePage');
 
       },
 

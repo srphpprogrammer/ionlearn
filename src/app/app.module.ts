@@ -7,14 +7,14 @@ import {Http,HttpModule} from '@angular/http';
 import {Storage} from '@ionic/storage';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { SignupPage } from '../pages/signup/signup';
-import { LoginPage } from '../pages/login/login';
+//import { HomePage } from '../pages/home/home';
+//import { SignupPage } from '../pages/signup/signup';
+//import { LoginPage } from '../pages/login/login';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
-import { ProfiePage } from '../pages/profie/profie';
-import { ActivityPage } from '../pages/activity/activity';
-import { EditprofilePage } from '../pages/editprofile/editprofile';
-import { PhotosPage } from '../pages/photos/photos';
+//import { ProfiePage } from '../pages/profie/profie';
+//import { ActivityPage } from '../pages/activity/activity';
+//import { EditprofilePage } from '../pages/editprofile/editprofile';
+//import { PhotosPage } from '../pages/photos/photos';
 import {AuthHttp, AuthConfig} from 'angular2-jwt';
   import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
 import { Camera, CameraOptions } from '@ionic-native/camera';
@@ -40,13 +40,14 @@ export function getAuthHttp(http) {
 
 @NgModule({
   declarations: [
-    MyApp,HomePage,
-    ProfiePage,
-    SignupPage,
-    LoginPage,
-    ActivityPage,
-    EditprofilePage,
-    PhotosPage
+    MyApp,
+    //HomePage,
+    //ProfiePage,
+    //SignupPage,
+    //LoginPage,
+   // ActivityPage,
+   // EditprofilePage,
+    //PhotosPage
   ],
   imports: [
     BrowserModule,
@@ -57,13 +58,13 @@ export function getAuthHttp(http) {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    ProfiePage,
-    PhotosPage,
-    SignupPage,
-    LoginPage,
-    ActivityPage,
-    EditprofilePage
+    //HomePage,
+   // ProfiePage,
+    //PhotosPage,
+   // SignupPage,
+   // LoginPage,
+   // ActivityPage,
+   // EditprofilePage
   ],
   providers: [
     StatusBar,

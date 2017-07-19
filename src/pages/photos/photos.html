@@ -23,8 +23,11 @@
 <ion-grid>
   <ion-row *ngFor="let row of grid">
     <ion-col width-50 *ngFor="let file_uri of row">
-    
+            <ion-card class="releative">
+ <!--          
+          <ion-icon  ios="ios-add-circle" md="md-add-circle"class="deleteIcon"></ion-icon> -->
       <img [src]="file_uri">
+        </ion-card>
     </ion-col>
   </ion-row>
 </ion-grid>
